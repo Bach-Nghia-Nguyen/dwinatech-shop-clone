@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { commerce } from "lib/commerce";
 import ProductsPage from "pages/ProductsPage";
+import NavBar from "components/NavBar";
 import "./App.css";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <ProductsPage products={products} />
