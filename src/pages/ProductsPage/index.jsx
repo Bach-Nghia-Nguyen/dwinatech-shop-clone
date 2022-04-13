@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Grid } from "@mui/material";
 import Product from "components/Product";
 import Banner from "components/Banner";
+import "./style.css";
 
 const ProductsPage = ({ products }) => {
   return (

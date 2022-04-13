@@ -4,6 +4,7 @@ import { commerce } from "lib/commerce";
 import ProductsPage from "pages/ProductsPage";
 import NavBar from "components/NavBar";
 import "./App.css";
+import Footer from "components/Footer";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,7 @@ const App = () => {
             <ProductsPage products={products} />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   );
