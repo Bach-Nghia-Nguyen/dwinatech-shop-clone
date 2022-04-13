@@ -1,10 +1,12 @@
 import React from "react";
-import Product from "components/Product";
 import { Container, Grid } from "@mui/material";
+import Product from "components/Product";
+import Banner from "components/Banner";
 
 const ProductsPage = ({ products }) => {
   return (
     <div>
+      <Banner />
       <Container id="products">
         <Grid container spacing={4}>
           {products.map((product) => (
