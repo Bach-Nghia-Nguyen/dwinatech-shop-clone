@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Card,
@@ -11,6 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import Spinner from "components/Spinner";
+import BasketBanner from "components/BasketBanner";
 import "./style.css";
 
 const BasketPage = ({
@@ -19,8 +21,21 @@ const BasketPage = ({
   onEmptyBasket,
   onRemoveItemFromBasket,
 }) => {
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  const loading = () => {
+    setTimeout(() => {
+      setShowSpinner(false);
+    }, 2000);
+    if (showSpinner) {
+      return <Spinner />;
+    } else {
+      return <BasketBanner />;
+    }
+  };
+
   if (!basketData?.line_items || !basketData?.line_items.length) {
-    return <h1>Loading...</h1>;
+    return loading();
   } else {
     return (
       <Container id="basket">
