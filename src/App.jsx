@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { commerce } from "lib/commerce";
 import ProductsPage from "pages/ProductsPage";
 import BasketPage from "pages/BasketPage";
+import CheckoutPage from "pages/CheckoutPage";
 import NavBar from "components/NavBar";
 import Footer from "components/Footer";
 import "./App.css";
@@ -15,7 +16,6 @@ const App = () => {
     const fetchProducts = async () => {
       const response = await commerce.products.list();
       if (response) {
-        console.log(response);
         setProducts((response && response.data) || []);
       }
     };
@@ -25,6 +25,7 @@ const App = () => {
   useEffect(() => {
     const fetchBasketData = async () => {
       const response = await commerce.cart.retrieve();
+      console.log("basketData", response);
       setBasketData(response);
     };
     fetchBasketData();
@@ -74,6 +75,9 @@ const App = () => {
               onEmptyBasket={handleEmptyBasket}
               onRemoveItemFromBasket={handleRemoveItemFromBasket}
             />
+          </Route>
+          <Route exact path="/checkout">
+            <CheckoutPage basketData={basketData} />
           </Route>
         </Switch>
         <Footer />
